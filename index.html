@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(236, 231, 238);
+  color: white;
+  scroll-behavior: smooth;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial;
+}
+h2 {
+  text-align: center;
+  font-family: Arial;
+}
+
+input[type="text"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 13px;
+  font-family: arial;
+  border: 1px solid #aaaaaa;
+  height: 30px;
+}
+input[type="tel"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 13px;
+  font-family: arial;
+  border: 1px solid #aaaaaa;
+  height: 30px;
+
+}
+input[type="email"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 13px;
+  font-family: arial;
+  border: 1px solid #aaaaaa;
+  height: 30px;
+}
+::-webkit-input-placeholder {
+  font-size: 12px;
+}
+
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #f0e400;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+.multiselect {
+  width: 300px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  font-size: 12px;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+/*2nd checkbox*/
+#checkboxes2 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes2 label {
+  display: block;
+}
+
+#checkboxes2 label:hover {
+  background-color: #1e90ff;
+}
+</style>
+  </head>
+  <body>
+    <div class="container" style="background-color:rgb(236, 231, 238);">
+    <button type="button" id="tally-button" onclick="nextPrev(1)" onclick="showdiv()" style="background-color:#421359; width:100%; border:1px solid white; box-shadow: 2px 2px 2px grey;">Join 8 hours FREE Tally.ERP9 training! <br></button><br><br>
+    <button type="button" id="tally-button" onclick="nextPrev(1)" onclick="showdiv()" style="background-color:#421359; width:100%; border:1px solid white;box-shadow: 2px 2px 2px grey;"><label style="font-size:14px;">இலவச டேலி பயிற்சியில் சேரவும்!</label> </button><br><br>
+
+    </div>
+    <div class="container" style="padding-top:10px; background-color:#421359;">
+          <h1 style="font-size:20px; text-align:left; font-weight:lighter;">F4 - Free Tally Training Registration Form</h1>
+    <p style="font-size:13px;font-weight:lighter;">Kindly fill up the form with care and accuracy. You will be contacted by our GENESIS Coordinator soon.</p>
+
+    <!-- Contact Form - sent to a Google Sheet -->
+    <form id='foo' action="post" name="foo">
+      <div class="tab">
+    <p><input placeholder="What is your name?..." oninput="this.className = ''" name="name" type="text"></p>
+    <div class="" style="padding-top:4px;">
+
+    </div>
+    <select class="gender" name="gender" style="font-size:13px;padding:6px; width:100%;" onblur="genderfunc2()" onfocus="genderfunc()">
+      <option id="blank"value="">What is your gender?</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>  <p id="gerror" style="color:red; font-size:12px;"></p>
+
+    <p><select id="age-limit" name="age-limit" style="font-size:13px; padding:6px;width:100%;">
+      <option value="">What is your age?</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+    </select></p>
+  <p><input id="phone" type="tel" name="phone" placeholder="Enter your 10 digit mobile number? " onblur="mobilefunction()"></p>
+  <p id="mobileerror" style="color:red; font-size:12px;"></p>
+
+  <p><input id="email" type="email" name="email" placeholder="What is your email id?"> </p>
+  <p id="emailerror" style="color:red;font-size:12px;"></p>
+
+  <p><input id="resident" type="text" name="resident" placeholder="Where is your residence/office located? "> </p>
+ <!--select box with multiselect checkbox-->
+
+    <div class="multiselect" style="width:100%;">
+    <div class="selectBox" onclick="showCheckboxes()">
+      <select style="font-size:12px;padding:6px;">
+        <option>What is your education background?</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="SSLC"/>SSLC<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="HSC"/>HSC/+2<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="B.Com"/>B.Com<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BBA"/>BBA <br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BCA"/>BCA<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BSc"/>BSc<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BA"/>BA<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BE"/>BE<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="M.Com"/>M.Com<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="MBA"/>MBA<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="MCA"/>MCA<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="MSc"/>MSc
+
+    </div>
+    <input type="text" id="education-status" name="education-status" style="display:none;">
+  </div><br>
+
+  </div>
+  <div class="tab">
+    <select class="occupation" name="occupation" style="padding:6px; font-size:12px; width:100%;">
+      <option value="">What are you currently doing?</option>
+      <option value="Working & searching for a better job">Working & searching for a better job</option>
+      <option value="Unemployed & searching for a Job">Unemployed & searching for a Job</option>
+      <option value="Studying">Studying</option>
+      <option value="Doing Business">Doing Business</option>
+    </select><br><br>
+
+    <div class="multiselect" style=" width:100%;">
+    <div class="selectBox" onclick="showCheckboxes2()">
+      <select style="font-size:12px;padding:6px;">
+        <option>What do you know already?</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes2" style="background-color:white; color:black; font-size:13px; padding:6px;">
+    <input type="checkbox" name="knowledge-of" class="knowledge-of" onclick="add_sub(this);" value="Knowledge in Accounts">Knowledge in Accounts.<br>
+    <input type="checkbox" name="knowledge-of" class="knowledge-of" onclick="add_sub(this);" value="Knowledge in Tally">Knowledge in Tally.<br>
+    <input type="checkbox" name="knowledge-of" class="knowledge-of" onclick="add_sub(this);" value="Knowledge in GST">Knowledge in GST.<br>
+    <input type="checkbox" name="knowledge-of" class="knowledge-of" onclick="add_sub(this);" value="Knowledge in Payroll">Knowledge in Payroll.<br>
+    <input type="checkbox" name="knowledge-of" class="knowledge-of" onclick="add_sub(this);" value="Knowledge in MS-Office">Knowledge in MS-Office.<br>
+    <input type="checkbox" name="knowledge-of" class="knowledge-of" onclick="add_sub(this);" value="Knowledge in Typing">Knowledge in Typing.<br>
+
+  </div>
+
+  <textarea id="knowledge" name="knowledge" rows="5" cols="35" onclick="this.focus();this.select();" style="display:none;">
+  </textarea>
+
+</div><br>
+  <select class="experience" name="experience"style="font-size:14px;padding:6px; width:100%;">
+    <option value="">How many years of experience you have in the Accounts domain? </option>
+    <option value="0-1 Years">0-1 Years</option>
+    <option value="1-5 Years">1-5 Years</option>
+    <option value="5-10 Years">5-10 Years</option>
+    <option value="10+ Years">10+ Years</option>
+
+
+  </select><br><br>
+
+  <div class="multiselect" style="width:100%;">
+  <div class="selectBox" onclick="showCheckboxes3()">
+    <select style="font-size:13px;padding:6px;">
+      <option>What do you expect from this Free Tally Training? </option>
+    </select>
+    <div class="overSelect"></div>
+  </div>
+  <div id="checkboxes3" style="background-color:white; color:black; font-size:13px; display:none; padding:6px;">
+  <input type="checkbox" name="expected" class="expected" onclick="add_sub(this);" value="Job">Job <br>
+  <input type="checkbox" name="expected" class="expected" onclick="add_sub(this);" value="Knowledge">Knowledge<br>
+  <input type="checkbox" name="expected" class="expected" onclick="add_sub(this);" value="Certificate">Certificate<br>
+  <input type="checkbox" name="expected" class="expected" onclick="add_sub(this);" value="Course Materials">Course Materials<br>
+</div>
+
+<input id="expectations"type="text" name="expectations" style="display:none;">
+
+</div><br>
+
+<div class="multiselect" style="width:100%;">
+<div class="selectBox" onclick="showCheckboxes4()">
+  <select style="font-size:13px;padding:6px;">
+    <option>How did you come to know about GENESIS? </option>
+  </select>
+  <div class="overSelect"></div>
+</div>
+<div id="checkboxes4" style="background-color:white; color:black; font-size:13px; display:none; padding:6px;">
+<input type="checkbox" name="know" class="know" onclick="add_sub(this);" value="Through Friends & Relatives"><label>Through Friends & Relatives</label><br>
+<input type="checkbox" name="know" class="know" onclick="add_sub(this);" value="Through Google"><label>Through Google</label><br>
+<input type="checkbox" name="know" class="know" onclick="add_sub(this);" value="Through Facebook"><label>Through Facebook</label><br>
+<input type="checkbox" name="know" class="know" onclick="add_sub(this);" value="Through SMS/WhatsApp"><label>Through SMS/WhatsApp</label><br>
+<input type="checkbox" name="know" class="know" onclick="add_sub(this);" value="Through Newspaper/ TV Ads"><label>Through Newspaper/ TV Ads</label><br>
+
+</div>
+<input id="known-medium"type="text" name="known-medium" style="display:none;">
+</div><br>
+
+<select class="batch-date" name="batch-date" style="font-size:13px; padding:6px; width:100%;">
+  <option value="">Which of these batch dates would be convenient for you to attend the Free Tally Training?</option>
+  <option value="Saturday - 14th December 2019">Saturday - 14th December 2019</option>
+  <option value="Saturday - 21st December 2019">Saturday - 21st December 2019</option>
+</select><br><br>
+
+<textarea id="anything-else" name="anything-else" rows="2" cols="50" placeholder="Do you want to ask us something more regarding your future or career?" style="font-face:arial; font-size:13px; width:100%;"></textarea><hr>
+<br>
+
+</div><br>
+<p id="formerror" style="color:red;font-size:12px;"></p>
+
+<!---->
+<div class="tab">
+  <h2 style="font-face:arial; font-size:30px; padding-top:280px;">Click on the Sumbit button to send us your details</h1>
+
+</div>
+<div class="tab">
+  <h1 style="font-face:arial; font-size:30px; padding-top:280px;">Thank you for your details. Our Admission officer will contact you soon. Feel Free to call <a href="tel:1800 425 8070"> 1800 425 8070</a> for clarifications</h1>
+
+</div>
+
+<!---->
+  <div style="overflow:auto;">
+    <div style="float:right; padding-top:10px;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)"  style="background-color:#FE344F">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)" style="background-color:#343AFE">Next</button>
+       <button id="submit" type='submit' onclick="submits(1);">Submit</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step" style="display:none;"></span>
+
+
+  </div>
+
+    </form>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src='google-script.js'></script>
+  <script src='extra-scripts.js'></script>
+
+
+</html>
