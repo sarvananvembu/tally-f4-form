@@ -188,13 +188,14 @@ button:hover {
     <div class="" style="padding-top:4px;">
 
     </div>
-    <select class="gender" name="gender" style="font-size:13px;padding:6px; width:100%;" onblur="genderfunc2()" onfocus="genderfunc()">
+    <select class="gender" name="gender" style="font-size:13px;padding:6px; width:100%;" onblur="genderfunc2()" onfocus="genderfunc()" onchange="Genderfunc(this)">
       <option id="blank"value="">What is your gender?</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
+      <input id="gender-input" type="text" name="gender-input" style="display:none;">
     </select>  <p id="gerror" style="color:red; font-size:12px;"></p>
 
-    <p><select id="age-limit" name="age-limit" style="font-size:13px; padding:6px;width:100%;">
+    <p><select id="age-limit" name="age-limit" style="font-size:13px; padding:6px;width:100%;" onchange="Age(this)">
       <option value="">What is your age?</option>
       <option value="19">19</option>
       <option value="20">20</option>
@@ -214,6 +215,7 @@ button:hover {
       <option value="34">34</option>
       <option value="35">35</option>
     </select></p>
+    <input id="age-input" type="text" name="age-input" style="display:none;">
   <p><input id="phone" type="tel" name="phone" placeholder="Enter your 10 digit mobile number? " onblur="mobilefunction()"></p>
   <p id="mobileerror" style="color:red; font-size:12px;"></p>
 
@@ -251,12 +253,13 @@ button:hover {
 
   </div>
   <div class="tab">
-    <select class="occupation" name="occupation" style="padding:6px; font-size:12px; width:100%;">
+    <select class="occupation" name="occupation" style="padding:6px; font-size:12px; width:100%;" onchange="Occp(this)">
       <option value="">What are you currently doing?</option>
       <option value="Working & searching for a better job">Working & searching for a better job</option>
       <option value="Unemployed & searching for a Job">Unemployed & searching for a Job</option>
       <option value="Studying">Studying</option>
       <option value="Doing Business">Doing Business</option>
+      <input type="text" name="occupation-input" id="occupation-input" style="display:none;">
     </select><br><br>
 
     <div class="multiselect" style=" width:100%;">
@@ -276,17 +279,16 @@ button:hover {
 
   </div>
 
-  <textarea id="knowledge" name="knowledge" rows="5" cols="35" onclick="this.focus();this.select();" style="display:none;">
-  </textarea>
+  <input type="text" name="knowledge" id="knowledge" style="display:none;">
 
 </div><br>
-  <select class="experience" name="experience"style="font-size:14px;padding:6px; width:100%;">
+  <select class="experience" name="experience"style="font-size:14px;padding:6px; width:100%;" onchange="Expc(this)">
     <option value="">How many years of experience you have in the Accounts domain? </option>
     <option value="0-1 Years">0-1 Years</option>
     <option value="1-5 Years">1-5 Years</option>
     <option value="5-10 Years">5-10 Years</option>
     <option value="10+ Years">10+ Years</option>
-
+<input type="text" name="experience-input" id="experience-input" style="display:none;">
 
   </select><br><br>
 
@@ -326,10 +328,11 @@ button:hover {
 <input id="known-medium"type="text" name="known-medium" style="display:none;">
 </div><br>
 
-<select class="batch-date" name="batch-date" style="font-size:13px; padding:6px; width:100%;">
+<select class="batch-date" name="batch-date" style="font-size:13px; padding:6px; width:100%;" onchange="Batch(this)">
   <option value="">Which of these batch dates would be convenient for you to attend the Free Tally Training?</option>
   <option value="Saturday - 14th December 2019">Saturday - 14th December 2019</option>
   <option value="Saturday - 21st December 2019">Saturday - 21st December 2019</option>
+  <input type="text" name="batch-date-input" id="batch-date-input" style="display:none;">
 </select><br><br>
 
 <textarea id="anything-else" name="anything-else" rows="2" cols="50" placeholder="Do you want to ask us something more regarding your future or career?" style="font-face:arial; font-size:13px; width:100%;"></textarea><hr>

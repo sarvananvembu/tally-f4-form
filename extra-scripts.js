@@ -119,3 +119,33 @@ $("#tally-button").click(function() {
         scrollTop: $("#foo").offset().top},
         'slow');
 });
+//selectBox 1
+function Genderfunc(data) {
+
+document.getElementById ("gender-input").value = data.value;
+
+}
+//selectBox 2
+function Age(data) {
+
+document.getElementById ("age-input").value = data.value;
+
+}
+//selectBox 3
+function Occp(data) {
+
+document.getElementById ("occupation-input").value = data.value;
+
+}
+//selectBox 4
+function Expc(data) {
+
+document.getElementById ("experience-input").value = data.value;
+
+}
+//selectBox 5
+function Batch(data) {
+
+document.getElementById ("batch-date-input").value = data.value;
+
+}
